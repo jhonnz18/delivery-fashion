@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Producto | Delivery Fashion</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .detalle-container {
+      max-width: 420px;
+      margin: 2em auto;
+      padding: 2em;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+      text-align: center;
+    }
+    .detalle-container img {
+      max-width: 100%;
+      border-radius: 14px;
+      margin-bottom: 1em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    }
+    .btn-comprar {
+      background: #4b3bbd;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 0.7em 1.5em;
+      font-weight: 500;
+      font-size: 1.1em;
+      transition: background 0.2s;
+      margin-bottom: 1.5em;
+      margin-top: 1em;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-comprar:hover {
+      background: #372a8c;
+      color: #fff;
+    }
+    .volver-link {
+      display: block;
+      margin-top: 1.8em;
+      color: #4b3bbd;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .volver-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body style="background:#f8f9fc;">
+  <div class="detalle-container">
+    <div id="detalle-producto">
+      <!-- Aquí se renderiza el producto con JS -->
+    </div>
+    <a href="productos.html" class="volver-link">&larr; Volver a productos</a>
+  </div>
+
+  <script src="assets/js/productos.js"></script>
+  <script>
+    // Obtener el id de la URL
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+
+    // Buscar producto en el array
+    const producto = productos.find(p => p.id === id);
+
+    // Renderizar detalle
+    const container = document.getElementById("detalle-producto");
+    if (producto) {
+      container.innerHTML = `
+        <h1 style="font-size:2em;margin-bottom:0.4em;">${producto.nombre}</h1>
